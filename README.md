@@ -8,7 +8,7 @@ This project demonstrates a **Verilog-based FSM (Finite State Machine)** impleme
 
 The Advanced Peripheral Bus (APB) is a low-power, low-complexity bus used to connect peripherals in a SoC. This project demonstrates the complete flow of an APB transaction using Verilog. Both the master and slave are implemented using finite state machines (FSMs) and the design is tested with a testbench and verified using waveform simulations.
 
-![APB](images/APB.png)
+![APB](Images/APB.png)
 
 
 ---
@@ -27,7 +27,7 @@ The Advanced Peripheral Bus (APB) is a low-power, low-complexity bus used to con
 ## Waveform Analysis
 
 The following waveform represents a **write followed by a read** operation on the APB bus.
-![Waveform](images/waveform.png)
+![Waveform](Images/waveform.png)
 
 
 ### Write Operation
@@ -71,7 +71,7 @@ Both operations follow the SETUP and ACCESS phase structure of APB.
 
 ### APB Slave
 
-| Signal     | Dir | Description                            |
+| Signal     | Direction | Description                            |
 |------------|-----|----------------------------------------|
 | `psel`     | In  | Slave select                           |
 | `penable`  | In  | Transfer enable                        |
@@ -86,6 +86,6 @@ Both operations follow the SETUP and ACCESS phase structure of APB.
 
 ## State Diagram
 
-![STATE DIAGRAM](images/STATE_DIAGRAM.png)
+![STATE DIAGRAM](Images/STATE_DIAGRAM.png)
 
 
