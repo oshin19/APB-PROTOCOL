@@ -27,7 +27,7 @@ The Advanced Peripheral Bus (APB) is a low-power, low-complexity bus used to con
 ## Waveform Analysis
 
 The following waveform represents a **write followed by a read** operation on the APB bus.
-![Waveform](Images/waveform.png)
+![Waveform](Images/WAVEFORM.png)
 
 
 ### Write Operation
