@@ -50,37 +50,39 @@ Both operations follow the SETUP and ACCESS phase structure of APB.
 
 ## Signal Descriptions
 
-### APB Master
+### APB Master (Requester)
 
-| Signal     | Direction | Description                            |
-|------------|-----|----------------------------------------|
-| `start`    | In  | Starts a new transaction               |
-| `write`    | In  | 1 = write, 0 = read                    |
-| `addr`     | In  | Target address                         |
-| `wdata`    | In  | Data to write                          |
-| `rdata`    | Out | Data read from slave                   |
-| `done`     | Out | Transaction complete                   |
-| `psel`     | Out | Slave select                           |
-| `penable`  | Out | Transfer enable                        |
-| `paddr`    | Out | APB address bus                        |
-| `pwrite`   | Out | Write control signal                   |
-| `pwdata`   | Out | Write data bus                         |
-| `prdata`   | In  | Data from slave                        |
-| `pready`   | In  | Transaction ready signal from slave    |
-| `pslverr`  | In  | Slave error signal                     |
+| Signal     | Direction | Description                                 |
+|------------|-----------|---------------------------------------------|
+| `start`    | Input     | Initiates a new APB transaction             |
+| `write`    | Input     | 1 = Write operation, 0 = Read operation     |
+| `addr`     | Input     | Target address for the transaction          |
+| `wdata`    | Input     | Data to be written                          |
+| `rdata`    | Output    | Data read from slave                        |
+| `done`     | Output    | Indicates end of transaction                |
+| `psel`     | Output    | Slave select signal                         |
+| `penable`  | Output    | Enables the data phase                      |
+| `paddr`    | Output    | Address line for the APB slave              |
+| `pwrite`   | Output    | 1 = Write, 0 = Read                         |
+| `pwdata`   | Output    | Data to be written                          |
+| `prdata`   | Input     | Data read from the slave                    |
+| `pready`   | Input     | Indicates slave is ready                    |
+| `pslverr`  | Input     | Indicates error from slave (invalid address)|
 
-### APB Slave
+---
 
-| Signal     | Direction | Description                            |
-|------------|-----|----------------------------------------|
-| `psel`     | In  | Slave select                           |
-| `penable`  | In  | Transfer enable                        |
-| `paddr`    | In  | Address from master                    |
-| `pwrite`   | In  | Write control                          |
-| `pwdata`   | In  | Data to write                          |
-| `prdata`   | Out | Data to be read                        |
-| `pready`   | Out | Transaction ready                      |
-| `pslverr`  | Out | Error flag for invalid address         |
+### APB Slave (Completer)
+
+| Signal     | Direction | Description                                 |
+|------------|-----------|---------------------------------------------|
+| `psel`     | Input     | Indicates slave is selected                 |
+| `penable`  | Input     | Indicates data transfer phase is active     |
+| `paddr`    | Input     | Address of register to read/write           |
+| `pwrite`   | Input     | 1 = Write,0 = Read                          |
+| `pwdata`   | Input     | Data from master to write                   |
+| `prdata`   | Output    | Data sent to master                         |
+| `pready`   | Output    | Indicates transaction completion            |
+| `pslverr`  | Output    | High when address is out of range           |
 
 ---
 
@@ -88,4 +90,8 @@ Both operations follow the SETUP and ACCESS phase structure of APB.
 
 ![STATE DIAGRAM](Images/STATE_DIAGRAM.png)
 
+## Reference
 
+- [ARM APB Protocol Specification](https://documentation-service.arm.com/static/60d5b505677cf7536a55c245?token=)
+
+---
